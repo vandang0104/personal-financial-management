@@ -1,0 +1,43 @@
+//- Path: views/pages/dashboard/index.pug
+extends ../../layouts/default.pug
+
+block main
+  h1 All Transactions
+
+  .row.mt-4
+    //- Total Balance Card
+    .col-lg-4.mb-4
+      .card.card-custom.card-balance
+        .card-body
+          h5.card-title Total Balance
+          p.card-text.display-4 150,500
+          small VND
+
+    //- Total Income Card
+    .col-lg-4.mb-4
+      .card.card-custom.card-income
+        .card-body
+          h5.card-title Total Income
+          p.card-text.display-6 225,300
+          small VND
+          //- Placeholder for pie chart
+          .chart-placeholder Income Chart
+
+    //- Total Expense Card
+    .col-lg-4.mb-4
+      .card.card-custom.card-expense
+        .card-body
+          h5.card-title Total Expense
+          p.card-text.display-6 74,800
+          small VND
+          //- Placeholder for pie chart
+          .chart-placeholder Expense Chart
+  
+  //- Line Chart
+  .row.mt-4
+    .col-12
+      .card.card-custom
+        .card-body
+          h5.card-title Income vs Expenses
+          //- Placeholder for line chart
+          .chart-placeholder.line-chart Line Chart

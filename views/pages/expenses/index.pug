@@ -1,0 +1,16 @@
+//- Path: views/pages/expenses/index.pug
+extends ../../layouts/default.pug
+
+block main
+  h1 Quản lý chi tiêu
+  .card.card-custom.mt-4
+    .card-body
+      h5.card-title Thêm khoản chi tiêu mới
+      form(action="/expenses/add", method="POST")
+        .mb-3
+          label(for="amount", class="form-label") Số tiền
+          input(type="number", id="amount", name="amount", class="form-control", placeholder="Ví dụ: 100000", required)
+        .mb-3
+          label(for="description", class="form-label") Mô tả
+          input(type="text", id="description", name="description", class="form-control", placeholder="Ví dụ: Mua sắm hàng tuần")
+        button(type="submit", class="btn btn-danger") Thêm

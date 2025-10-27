@@ -1,0 +1,158 @@
+/* Path: public/admin/css/style.css */
+
+:root {
+  --background-color: #212529;
+  --sider-background: #2b3035;
+  --main-background: #343a40;
+  --card-background: #3c424a;
+  --text-color: #f8f9fa;
+  --text-muted-color: #adb5bd;
+  --primary-color: #8a2be2; /* Purple Accent */
+  --income-color: #20c997;
+  --expense-color: #dc3545;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sider */
+.sider {
+  width: 260px;
+  background-color: var(--sider-background);
+  padding: 20px;
+  border-right: 1px solid #495057;
+  display: flex;
+  flex-direction: column;
+}
+
+.inner-logo {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+}
+
+.inner-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inner-menu li a {
+  display: block;
+  padding: 15px 20px;
+  color: var(--text-muted-color);
+  text-decoration: none;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.inner-menu li a:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+/* Main Content Area */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background-color: var(--main-background);
+  padding: 10px 30px;
+  border-bottom: 1px solid #495057;
+}
+
+.header .nav-link {
+  color: var(--text-muted-color);
+  font-weight: 500;
+}
+
+.header .nav-link.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Body Content */
+.content-body {
+  padding: 30px;
+  flex-grow: 1;
+  background-color: var(--main-background);
+}
+
+/* Custom Card Styling */
+.card-custom {
+  background-color: var(--card-background);
+  border: none;
+  border-radius: 15px;
+  color: var(--text-color);
+}
+
+.card-balance {
+  border-left: 5px solid var(--primary-color);
+}
+
+.card-income {
+  border-left: 5px solid var(--income-color);
+}
+
+.card-expense {
+  border-left: 5px solid var(--expense-color);
+}
+
+.card-custom .card-title {
+  color: var(--text-muted-color);
+  font-weight: 400;
+}
+
+.card-custom .card-text {
+  font-weight: 700;
+}
+
+.card-custom small {
+  font-weight: 300;
+  color: var(--text-muted-color);
+}
+
+.chart-placeholder {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted-color);
+  margin-top: 15px;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+.line-chart {
+    min-height: 250px;
+}
+
+/* Form Styling */
+.form-control {
+    background-color: var(--main-background);
+    border: 1px solid #495057;
+    color: var(--text-color);
+}
+.form-control:focus {
+    background-color: var(--main-background);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+}
+.form-label {
+    color: var(--text-muted-color);
+}
