@@ -39,5 +39,9 @@ block main
       .card.card-custom
         .card-body
           h5.card-title Income vs Expenses
-          //- Placeholder for line chart
-          .chart-placeholder.line-chart Line Chart
+          div(style="height: 350px;")
+            canvas#myChart
+
+  script.
+    const incomes = !{incomesData};
+    const expenses = !{expensesData};
