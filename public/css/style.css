@@ -26,6 +26,11 @@ body {
 
 /* Sider */
 .sider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1000;
   width: 260px;
   background-color: var(--sider-background);
   padding: 20px;
@@ -64,6 +69,7 @@ body {
 
 /* Main Content Area */
 .main-content {
+  margin-left: 260px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -71,6 +77,9 @@ body {
 
 /* Header */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
   background-color: var(--main-background);
   padding: 10px 30px;
   border-bottom: 1px solid #495057;
