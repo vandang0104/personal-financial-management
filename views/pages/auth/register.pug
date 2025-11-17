@@ -1,0 +1,27 @@
+extends ../../layouts/auth.pug
+
+block main
+  .card.card-auth.p-4
+    .card-body
+      h3.card-title Đăng ký tài khoản
+      p.text-muted.text-center.mb-4 Quản lý tài chính hiệu quả hơn
+      
+      form(action="/register", method="POST")
+        .mb-3
+          label(for="fullName", class="form-label") Họ và tên
+          input(type="text", id="fullName", name="fullName", class="form-control", placeholder="Ví dụ: Nguyễn Văn A", required)
+
+        .mb-3
+          label(for="username", class="form-label") Tên đăng nhập
+          input(type="text", id="username", name="username", class="form-control", placeholder="Chọn tên đăng nhập", required)
+        
+        .mb-3
+          label(for="password", class="form-label") Mật khẩu
+          input(type="password", id="password", name="password", class="form-control", placeholder="Nhập mật khẩu", required)
+        
+        .d-grid.gap-2.mt-4
+          button(type="submit", class="btn btn-primary") Đăng ký
+      
+      .mt-3.text-center
+        small Đã có tài khoản? 
+          a(href="/login") Đăng nhập

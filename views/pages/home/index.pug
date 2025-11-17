@@ -1,0 +1,36 @@
+extends ../../layouts/auth.pug
+
+block main
+  .container
+    //- Hero Section
+    .landing-hero
+      h1.hero-title Quản Lý Tài Chính <br> Thông Minh & Hiệu Quả
+      p.hero-subtitle Theo dõi thu chi, kiểm soát ngân sách và đạt được mục tiêu tài chính của bạn một cách dễ dàng với giao diện trực quan.
+
+      .d-flex.justify-content-center.gap-3
+        a.btn.btn-primary.btn-lg-custom(href="/login") Đăng nhập ngay
+        a.btn.btn-outline-light.btn-lg-custom(href="/register") Đăng ký mới
+
+    //- Features Section (3 thẻ giới thiệu bên dưới)
+    .features-grid
+      //- Card 1
+      .feature-card
+        .feature-icon 📊
+        h5 Trực quan hóa
+        p.text-muted.small Biểu đồ thu chi chi tiết giúp bạn nhìn rõ dòng tiền của mình đang đi đâu về đâu.
+      
+      //- Card 2
+      .feature-card
+        .feature-icon 🛡️
+        h5 An toàn & Bảo mật
+        p.text-muted.small Dữ liệu của bạn được bảo vệ an toàn, riêng tư và chỉ có bạn mới có thể truy cập.
+      
+      //- Card 3
+      .feature-card
+        .feature-icon 📱
+        h5 Mọi lúc mọi nơi
+        p.text-muted.small Truy cập và ghi chép chi tiêu nhanh chóng trên mọi thiết bị của bạn.
+    
+    //- Footer nhỏ
+    .text-center.mt-5
+      small.text-muted © 2024 Finance Tracker. All rights reserved.
