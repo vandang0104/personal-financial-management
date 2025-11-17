@@ -165,3 +165,107 @@ body {
 .form-label {
     color: var(--text-muted-color);
 }
+
+
+/* --- Auth Pages Styling --- */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+.card-auth {
+  background-color: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid #495057;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card-auth .card-title {
+  text-align: center;
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.card-auth a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.card-auth a:hover {
+  text-decoration: underline;
+  color: #9d4edd;
+}
+
+
+/* --- Landing Page Styling --- */
+.landing-hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* Hiệu ứng chữ Gradient màu tím */
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #fff, var(--primary-color), #d0a0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted-color);
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+/* Nút bấm to đẹp hơn */
+.btn-lg-custom {
+  padding: 12px 40px;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: transform 0.2s;
+}
+
+.btn-lg-custom:hover {
+  transform: translateY(-3px); /* Hiệu ứng nổi lên khi di chuột */
+}
+
+/* Phần tính năng (Features) */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.feature-card {
+  background: rgba(60, 66, 74, 0.5); /* Màu kính mờ */
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  background: rgba(60, 66, 74, 0.8);
+  border-color: var(--primary-color);
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
