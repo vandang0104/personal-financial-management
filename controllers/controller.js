@@ -1,3 +1,5 @@
+const User = require('../models/User')
+
 module.exports.renderDashboard = (req, res) => {
     // dữ liệu giả lập
     const history = [
@@ -21,10 +23,21 @@ module.exports.renderDashboard = (req, res) => {
 }
 
 // [POST] /register
-module.exports.register = async (req,res) =>{
+module.exports.register = async (req, res) => {
     try {
-        
+        const existingUser = await User.findOne({ 
+            username: req.body.username 
+        });
+
+        if (existingUser) {
+            console.log("Tài khoản đã tồn tại!");
+            return res.redirect('/register'); 
+        }
+
+        await User.create(req.body);
+        res.redirect('/login');
     } catch (error) {
-        
+        console.log("Lỗi đăng ký:", error);
+        res.redirect('/register');
     }
 }
