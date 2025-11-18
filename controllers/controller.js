@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const md5 = require('md5')
 
 module.exports.renderDashboard = (req, res) => {
     // dữ liệu giả lập
@@ -22,6 +23,11 @@ module.exports.renderDashboard = (req, res) => {
     });
 }
 
+// [GET] /register
+module.exports.registerGet = (req, res) => {
+    res.render('pages/auth/register')
+}
+
 // [POST] /register
 module.exports.register = async (req, res) => {
     try {
@@ -30,14 +36,35 @@ module.exports.register = async (req, res) => {
         });
 
         if (existingUser) {
-            console.log("Tài khoản đã tồn tại!");
+            req.flash('error','Tài khoản đã tồn tại')
             return res.redirect('/register'); 
         }
 
+        req.body.password = md5(req.body.password) 
+
         await User.create(req.body);
+        req.flash('success','Đăng kí thành công')
+        res.redirect('/login');
+    } catch (error) {
+        req.flash('error','Lỗi khi đăng kí tài khoản')
+        res.redirect('/register');
+    }
+}
+
+// [POST] /login
+module.exports.loginPost = async (req, res) => { 
+    try {
+        const User = await User.findOne({ 
+            username: req.body.username 
+        });
+
+        if (User && User.password === req.body.password ) {
+
+        }
+
         res.redirect('/login');
     } catch (error) {
         console.log("Lỗi đăng ký:", error);
-        res.redirect('/register');
+        res.redirect('/login');
     }
 }

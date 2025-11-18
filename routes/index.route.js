@@ -1,5 +1,6 @@
 const controller = require('../controllers/controller')
 const User = require("../models/User");
+const createAccValidate = require('../validate/createAccount')
 
 module.exports = (app) =>{
     app.get('/', (req, res) => {
@@ -20,9 +21,13 @@ module.exports = (app) =>{
         res.render('pages/auth/login')
     })
 
-    app.get('/register',(req,res)=>{
-        res.render('pages/auth/register')
-    })
+    app.post('/login',controller.loginPost)
 
-    app.post('/register', controller.register)
+    app.get('/register',controller.registerGet)
+
+    app.post(
+        '/register', 
+        createAccValidate.register,
+        controller.register
+    )
 }
