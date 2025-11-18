@@ -7,7 +7,9 @@ module.exports.requireAuth = async (req, res, next) => {
         return;
     }
 
-    const user = await User.findOne({ _id: req.cookies.token });
+    const user = await User.findOne({
+        _id: req.cookies.token
+    });
 
     if (!user) {
         req.flash('error', 'Tài khoản không hợp lệ!');
@@ -16,12 +18,12 @@ module.exports.requireAuth = async (req, res, next) => {
     }
     res.locals.user = user;
 
-    next(); 
+    next();
 }
 
 module.exports.requireGuest = (req, res, next) => {
     if (req.cookies.token) {
-        res.redirect('/dashboard'); 
+        res.redirect('/dashboard');
         return;
     }
     next();

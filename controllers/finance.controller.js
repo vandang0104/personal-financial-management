@@ -1,4 +1,4 @@
-const Transaction = require('../models/Transaction'); 
+const Transaction = require('../models/Transaction');
 
 // [GET] /incomes
 module.exports.incomes = (req, res) => {
@@ -9,15 +9,15 @@ module.exports.incomes = (req, res) => {
 module.exports.addIncome = async (req, res) => {
     try {
         await Transaction.create({
-            userId: res.locals.user.id, 
-            type: 'income',             
-            amount: parseInt(req.body.amount), 
+            userId: res.locals.user.id,
+            type: 'income',
+            amount: parseInt(req.body.amount),
             category: req.body.category,
             description: req.body.description
         });
 
         req.flash('success', 'Đã thêm khoản thu mới!');
-        res.redirect('/incomes'); 
+        res.redirect('/incomes');
     } catch (error) {
         console.log("Lỗi thêm thu nhập:", error);
         req.flash('error', 'Lỗi hệ thống, vui lòng thử lại!');
@@ -35,7 +35,7 @@ module.exports.addExpense = async (req, res) => {
     try {
         await Transaction.create({
             userId: res.locals.user.id,
-            type: 'expense',            
+            type: 'expense',
             amount: parseInt(req.body.amount),
             category: req.body.category,
             description: req.body.description

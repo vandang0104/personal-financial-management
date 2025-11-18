@@ -9,35 +9,38 @@ module.exports.register = (req, res) => {
 // [POST] /register
 module.exports.registerPost = async (req, res) => {
     try {
-        const existingUser = await User.findOne({ 
-            username: req.body.username 
+        const existingUser = await User.findOne({
+            username: req.body.username
         });
 
         if (existingUser) {
-            req.flash('error','Tài khoản đã tồn tại')
-            return res.redirect('/register'); 
+            req.flash('error', 'Tài khoản đã tồn tại')
+            return res.redirect('/register');
         }
 
-        req.body.password = md5(req.body.password) 
+        req.body.password = md5(req.body.password)
 
         await User.create(req.body);
-        req.flash('success','Đăng kí thành công')
+        req.flash('success', 'Đăng kí thành công')
         res.redirect('/login');
     } catch (error) {
-        req.flash('error','Lỗi khi đăng kí tài khoản')
+        req.flash('error', 'Lỗi khi đăng kí tài khoản')
         res.redirect('/register');
     }
 }
 
 // [GET] /login
-module.exports.login = (req,res)=>{
+module.exports.login = (req, res) => {
     res.render('pages/auth/login')
 }
 
 // [POST] /login
 module.exports.loginPost = async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const {
+            username,
+            password
+        } = req.body;
 
         // 1. Tìm user trong DB
         const user = await User.findOne({
@@ -46,7 +49,7 @@ module.exports.loginPost = async (req, res) => {
 
         if (!user) {
             req.flash('error', 'Sai tên tài khoản hoặc mật khẩu!');
-            res.redirect("back"); 
+            res.redirect("back");
             return;
         }
 
@@ -65,7 +68,7 @@ module.exports.loginPost = async (req, res) => {
         res.redirect("/dashboard");
 
     } catch (error) {
-        console.log("Lỗi đăng nhập:", error); 
+        console.log("Lỗi đăng nhập:", error);
         res.redirect('/login');
     }
 }
@@ -73,6 +76,6 @@ module.exports.loginPost = async (req, res) => {
 // [GET] /logout
 module.exports.logout = (req, res) => {
     res.clearCookie("token");
-    
+
     res.redirect("/login");
 };
