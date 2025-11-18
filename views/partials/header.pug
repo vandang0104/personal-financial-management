@@ -1,5 +1,12 @@
-//- Path: views/partials/header.pug
 header.header
   .container-fluid
-    nav.nav
-      a.nav-link.active(href="/") Home
+    .d-flex.justify-content-between.align-items-center
+      //- [SỬA LẠI PHẦN NÀY]
+      div
+        h5.text-white.mb-0.fw-bold Tổng quan tài chính
+        small.text-white-50 Quản lý chi tiêu thông minh
+
+      .user-info
+        if user
+          span.text-white.me-2 Xin chào, 
+            b #{user.fullName}

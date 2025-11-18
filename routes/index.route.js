@@ -25,5 +25,5 @@ module.exports = (app) => {
     app.post('/register', validate.register, authController.registerPost);
 
     // Đăng xuất 
-    // app.get('/logout', authController.logout);
+    app.get('/logout', authController.logout);
 };
