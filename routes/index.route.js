@@ -1,33 +1,29 @@
-const controller = require('../controllers/controller')
-const User = require("../models/User");
-const createAccValidate = require('../validate/createAccount')
+const homeController = require('../controllers/home.controller');
+const dashboardController = require('../controllers/dashboard.controller');
+const financeController = require('../controllers/finance.controller');
+const authController = require('../controllers/auth.controller'); 
+const authMiddleware = require('../middlewares/auth.middleware');
+const validate = require('../validate/register.validate');
 
-module.exports = (app) =>{
-    app.get('/', (req, res) => {
-        res.render('pages/home/index'); 
-    });
+module.exports = (app) => {
 
-    app.get('/dashboard',controller.renderDashboard)
+    // Trang chủ
+    app.get('/', homeController.index);
 
-    app.get('/incomes',(req,res)=>{
-        res.render('pages/incomes/index') 
-    })
+    // Khu vực Dashboard 
+    app.get('/dashboard', authMiddleware.requireAuth, dashboardController.index);
+    
+    // Quản lý Thu/Chi
+    app.get('/incomes', authMiddleware.requireAuth, financeController.incomes);
+    app.get('/expenses', authMiddleware.requireAuth, financeController.expenses);
 
-    app.get('/expenses',(req,res)=>{
-        res.render('pages/expenses/index') 
-    })
+    // Khu vực xác thực 
+    app.get('/login', authController.login);
+    app.post('/login', authController.loginPost);
 
-    app.get('/login',(req,res)=>{
-        res.render('pages/auth/login')
-    })
+    app.get('/register', authController.register);
+    app.post('/register', validate.register, authController.registerPost);
 
-    app.post('/login',controller.loginPost)
-
-    app.get('/register',controller.registerGet)
-
-    app.post(
-        '/register', 
-        createAccValidate.register,
-        controller.register
-    )
-}
+    // Đăng xuất 
+    // app.get('/logout', authController.logout);
+};
