@@ -11,6 +11,14 @@ block main
           label(for="amount", class="form-label") Số tiền
           input(type="number", id="amount", name="amount", class="form-control", placeholder="Ví dụ: 500000", required)
         .mb-3
+          label(for="category", class="form-label") Danh mục
+          select(name="category", id="category", class="form-control")
+            option(value="Lương" selected) 💰 Lương
+            option(value="Thưởng") 🎁 Thưởng
+            option(value="Đầu tư") 📈 Đầu tư
+            option(value="Bán hàng") 🛍️ Bán hàng
+            option(value="Khác") 🔖 Khác
+        .mb-3
           label(for="description", class="form-label") Mô tả
           input(type="text", id="description", name="description", class="form-control", placeholder="Ví dụ: Lương tháng 10")
         button(type="submit", class="btn btn-primary") Thêm

@@ -11,6 +11,17 @@ block main
           label(for="amount", class="form-label") Số tiền
           input(type="number", id="amount", name="amount", class="form-control", placeholder="Ví dụ: 100000", required)
         .mb-3
+          label(for="category", class="form-label") Danh mục
+          select(name="category", id="category", class="form-control")
+            option(value="Ăn uống" selected) 🍜 Ăn uống
+            option(value="Di chuyển") 🛵 Di chuyển
+            option(value="Nhà cửa") 🏠 Nhà cửa / Điện nước
+            option(value="Mua sắm") 🛒 Mua sắm
+            option(value="Giải trí") 🎬 Giải trí
+            option(value="Sức khỏe") 💊 Sức khỏe
+            option(value="Giáo dục") 📚 Giáo dục
+            option(value="Khác") 🔖 Khác
+        .mb-3
           label(for="description", class="form-label") Mô tả
           input(type="text", id="description", name="description", class="form-control", placeholder="Ví dụ: Mua sắm hàng tuần")
         button(type="submit", class="btn btn-danger") Thêm

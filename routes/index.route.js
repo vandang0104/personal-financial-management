@@ -13,9 +13,13 @@ module.exports = (app) => {
     // Khu vực Dashboard 
     app.get('/dashboard', authMiddleware.requireAuth, dashboardController.index);
     
-    // Quản lý Thu/Chi
+    // Quản lý Thu nhập
     app.get('/incomes', authMiddleware.requireAuth, financeController.incomes);
+    app.post('/incomes/add', authMiddleware.requireAuth, financeController.addIncome);
+
+    // Quản lý Chi tiêu
     app.get('/expenses', authMiddleware.requireAuth, financeController.expenses);
+    app.post('/expenses/add', authMiddleware.requireAuth, financeController.addExpense); 
 
     // Khu vực xác thực 
     app.get('/login', authMiddleware.requireGuest,authController.login);
