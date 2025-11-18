@@ -50,11 +50,12 @@ module.exports.loginPost = async (req, res) => {
             return;
         }
 
-        if (req.body.password !== user.password) {
+        if (md5(req.body.password) !== user.password) {
             req.flash('error', 'Sai tên tài khoản hoặc mật khẩu!');
             res.redirect("back");
             return;
         }
+
         // lưu cookies
         res.cookie("token", user.id, {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 giờ

@@ -18,3 +18,11 @@ module.exports.requireAuth = async (req, res, next) => {
 
     next(); 
 }
+
+module.exports.requireGuest = (req, res, next) => {
+    if (req.cookies.token) {
+        res.redirect('/dashboard'); 
+        return;
+    }
+    next();
+}

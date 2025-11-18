@@ -8,7 +8,7 @@ const validate = require('../validate/register.validate');
 module.exports = (app) => {
 
     // Trang chủ
-    app.get('/', homeController.index);
+    app.get('/', authMiddleware.requireGuest,homeController.index);
 
     // Khu vực Dashboard 
     app.get('/dashboard', authMiddleware.requireAuth, dashboardController.index);
@@ -18,10 +18,10 @@ module.exports = (app) => {
     app.get('/expenses', authMiddleware.requireAuth, financeController.expenses);
 
     // Khu vực xác thực 
-    app.get('/login', authController.login);
+    app.get('/login', authMiddleware.requireGuest,authController.login);
     app.post('/login', authController.loginPost);
 
-    app.get('/register', authController.register);
+    app.get('/register', authMiddleware.requireGuest,authController.register);
     app.post('/register', validate.register, authController.registerPost);
 
     // Đăng xuất 
