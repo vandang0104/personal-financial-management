@@ -1,6 +1,9 @@
 require("dotenv").config()
 const express = require('express')
 const path = require('path')
+const flash = require("express-flash")
+const cookieParser = require("cookie-parser")
+const session = require("express-session")
 
 const app = express() 
 const port = process.env.PORT
@@ -21,6 +24,14 @@ app.use(express.urlencoded({ extended: true }));
 
 //setting static files chart 
 app.use('/scripts', express.static(path.join(__dirname, 'node_modules/chart.js/dist')));
+
+
+// Flash
+app.use(cookieParser('asdkasjd'));
+app.use(session({ cookie: { maxAge: 60000 } }));
+app.use(flash());
+// END Flash
+
 
 //routing
 const routes = require("./routes/index.route")
