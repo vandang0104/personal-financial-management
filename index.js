@@ -13,11 +13,11 @@ const database = require("./config/database")
 database.connect()
 
 //setting template engine
-app.set('views', './views')
+app.set('views', `${__dirname}/views`)
 app.set('view engine', 'pug')
 
 //setting static files public
-app.use(express.static('public'))
+app.use(express.static(`${__dirname}/public`))
 
 // application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
