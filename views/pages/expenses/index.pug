@@ -1,5 +1,5 @@
-//- Path: views/pages/expenses/index.pug
 extends ../../layouts/default.pug
+include ../../mixins/list.pug
 
 block main
   h1 Quản lý chi tiêu
@@ -25,3 +25,5 @@ block main
           label(for="description", class="form-label") Mô tả
           input(type="text", id="description", name="description", class="form-control", placeholder="Ví dụ: Mua sắm hàng tuần")
         button(type="submit", class="btn btn-danger") Thêm
+
+  +list-transactions("Lịch sử chi tiêu", expenses, "bg-danger")

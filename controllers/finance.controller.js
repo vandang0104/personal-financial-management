@@ -1,8 +1,20 @@
 const Transaction = require('../models/Transaction');
 
 // [GET] /incomes
-module.exports.incomes = (req, res) => {
-    res.render('pages/incomes/index');
+module.exports.incomes = async (req, res) => {
+    try {
+        const incomes = await Transaction.find({
+            userId: res.locals.user.id,
+            type: 'income'
+        }).sort({ date: -1 });
+
+        res.render('pages/incomes/index', {
+            incomes: incomes
+        });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/dashboard');
+    }
 }
 
 // [POST] /incomes/add 
@@ -26,8 +38,20 @@ module.exports.addIncome = async (req, res) => {
 }
 
 // [GET] /expenses
-module.exports.expenses = (req, res) => {
-    res.render('pages/expenses/index');
+module.exports.expenses = async (req, res) => {
+    try {
+        const expenses = await Transaction.find({
+            userId: res.locals.user.id,
+            type: 'expense'
+        }).sort({ date: -1 });
+
+        res.render('pages/expenses/index', {
+            expenses: expenses
+        });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/dashboard');
+    }
 }
 
 // [POST] /expenses/add

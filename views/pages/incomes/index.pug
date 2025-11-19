@@ -1,8 +1,9 @@
-//- Path: views/pages/incomes/index.pug
 extends ../../layouts/default.pug
+include ../../mixins/list.pug  
 
 block main
   h1 Quản lý thu nhập
+  
   .card.card-custom.mt-4
     .card-body
       h5.card-title Thêm khoản thu nhập mới
@@ -22,3 +23,5 @@ block main
           label(for="description", class="form-label") Mô tả
           input(type="text", id="description", name="description", class="form-control", placeholder="Ví dụ: Lương tháng 10")
         button(type="submit", class="btn btn-primary") Thêm
+
+  +list-transactions("Lịch sử thu nhập", incomes, "bg-success")
