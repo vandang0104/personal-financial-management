@@ -10,7 +10,15 @@ const port = process.env.PORT
 
 //connect database
 const database = require("./config/database")
-database.connect()
+app.use(async (req, res, next) => {
+  try {
+    await database.connect();
+    next(); 
+  } catch (error) {
+    console.error("Database connection error:", error);
+    res.status(500).send("Database connection failed");
+  }
+});
 
 //setting template engine
 app.set('views', `${__dirname}/views`)
