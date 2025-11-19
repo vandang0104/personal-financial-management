@@ -1,10 +1,35 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose');
 
-module.exports.connect = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URL);
-    console.log("Connect success")
-  } catch (error) {
-    console.log("Connect fail")
-  }
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
 }
+
+async function connect() {
+  if (cached.conn) {
+    return cached.conn;
+  }
+
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false, 
+    };
+
+    cached.promise = mongoose.connect(process.env.MONGO_URL, opts).then((mongoose) => {
+      console.log("✅ New MongoDB connection established");
+      return mongoose;
+    });
+  }
+
+  try {
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    throw e;
+  }
+
+  return cached.conn;
+}
+
+module.exports = { connect };
