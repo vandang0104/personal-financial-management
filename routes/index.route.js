@@ -16,10 +16,12 @@ module.exports = (app) => {
     // Quản lý Thu nhập
     app.get('/incomes', authMiddleware.requireAuth, financeController.incomes);
     app.post('/incomes/add', authMiddleware.requireAuth, financeController.addIncome);
+    app.post('/incomes/delete/:id', authMiddleware.requireAuth, financeController.deleteIncome);
 
     // Quản lý Chi tiêu
     app.get('/expenses', authMiddleware.requireAuth, financeController.expenses);
     app.post('/expenses/add', authMiddleware.requireAuth, financeController.addExpense); 
+    app.post('/expenses/delete/:id', authMiddleware.requireAuth, financeController.deleteExpense);
 
     // Khu vực xác thực 
     app.get('/login', authMiddleware.requireGuest,authController.login);

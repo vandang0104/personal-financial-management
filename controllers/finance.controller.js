@@ -73,3 +73,39 @@ module.exports.addExpense = async (req, res) => {
         res.redirect('/expenses');
     }
 }
+
+// [GET] /incomes/delete/:id
+module.exports.deleteIncome = async (req, res) => {
+    try {
+        const id = req.params.id;
+        await Transaction.findOneAndDelete({
+            _id: id,
+            userId: res.locals.user.id 
+        });
+
+        req.flash('success', 'Đã xóa khoản thu thành công!');
+        res.redirect('/incomes');
+    } catch (error) {
+        console.log(error);
+        req.flash('error', 'Xóa thất bại!');
+        res.redirect('/incomes');
+    }
+}
+
+// [GET] /expenses/delete/:id
+module.exports.deleteExpense = async (req, res) => {
+    try {
+        const id = req.params.id;
+        await Transaction.findOneAndDelete({
+            _id: id,
+            userId: res.locals.user.id
+        });
+
+        req.flash('success', 'Đã xóa khoản chi thành công!');
+        res.redirect('/expenses');
+    } catch (error) {
+        console.log(error);
+        req.flash('error', 'Xóa thất bại!');
+        res.redirect('/expenses');
+    }
+}
