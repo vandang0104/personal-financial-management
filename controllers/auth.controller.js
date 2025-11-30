@@ -49,13 +49,13 @@ module.exports.loginPost = async (req, res) => {
 
         if (!user) {
             req.flash('error', 'Sai tên tài khoản hoặc mật khẩu!');
-            res.redirect("back");
+            res.redirect("/login");
             return;
         }
 
         if (md5(req.body.password) !== user.password) {
             req.flash('error', 'Sai tên tài khoản hoặc mật khẩu!');
-            res.redirect("back");
+            res.redirect("/login");
             return;
         }
 
